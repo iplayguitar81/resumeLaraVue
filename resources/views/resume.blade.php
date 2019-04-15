@@ -387,7 +387,10 @@
 <script src="/js/components/Home.vue.js"></script>
 <script src="/js/components/Resume.vue.js"></script>
 <script src="/js/components/Portfolio.vue.js"></script>
+
+<script src="/js/components/Form.vue.js"></script>
 <script src="/js/components/Contact.vue.js"></script>
+
 
 <script src="/js/components/NotFound.vue.js"></script>
 
@@ -402,22 +405,45 @@
 
 
     const app = new Vue({
-        el: '#app',
+            el: '#app',
 
-        router: new VueRouter({ mode: 'history', linkActiveClass: 'active', routes }),
-
-        data: {
-            articles: [],
-            article: {
-                id: '',
-                title: '',
-                body: ''
+            data: {
+                contact: {
+                    name: '',
+                    email: '',
+                    comments: ''
+                }
             },
-            article_id: '',
-            pagination: {},
-            edit: false
+            router: new VueRouter({mode: 'history', linkActiveClass: 'active', routes}),
 
-        }
+//        component: {Form}
+
+
+
+
+//            data: {
+//                contact: {
+//                    name: '',
+//                    email: '',
+//                    message: '',
+//                },
+//
+//                isSending: false
+//            },
+
+//        data: {
+//            articles: [],
+//            article: {
+//                id: '',
+//                title: '',
+//                body: ''
+//            },
+//            article_id: '',
+//            pagination: {},
+//            edit: false
+//
+//        }
+
 
 //        created: function(){ this.fetchArticles();},
 //        methods: {
@@ -446,7 +472,8 @@
 //            },
 //
 //        },
-    },
+//    },
+        }
     );
 
 </script>
