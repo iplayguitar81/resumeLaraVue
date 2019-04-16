@@ -33,5 +33,13 @@ Vue.component('contact',
 '                    <br/>\n' +
 '                    <br/>\n' +
 '                </form>\n' +
-'            </div>' },
+'            </div>',
+
+        data() {
+        return {
+            name: null,
+            email: null,
+            comments: null
+        }
+    } },
     );
