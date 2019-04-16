@@ -35,6 +35,7 @@ Vue.component('contact',
 '                </form>\n' +
 '            </div>',
 
+        //two way data binding...
         data() {
         return {
             name: null,
