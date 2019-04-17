@@ -2,7 +2,7 @@
 
 
 const Contact = { template: '<div class="container mt-3"><div id="contact_form">\n' +
-'                <form id="form1">\n' +
+'                <form id="form1" @submit="onSubmit">\n' +
 '                    <p class="calibri main-text">Please feel free to send me a message!  I will review what has been sent to me and get back to you as soon as possible!  Thank you for taking the time to look at my portfolio &amp; resume.</p>\n' +
 '                    <br/>\n' +
 '                    <div data-role="content">\n' +
