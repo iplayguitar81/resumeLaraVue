@@ -1,4 +1,7 @@
-const Portfolio = { template: '<div class="container mt-3"><h1 id="portfolio_header" class="text-center trebuchet lg-headers"><i class="fas fa-briefcase"></i> Portfolio</h1>\n' +
+
+
+
+const Portfolio = {   template: '<div class="container mt-3"><h1 id="portfolio_header" class="text-center trebuchet lg-headers"><i class="fas fa-briefcase"></i> Portfolio</h1>\n' +
 '            <p class="main-text calibri">This section is dedicated to some of the work I have completed and felt appropriate to showcase.  If you click on a project image on this page, a navigable gallery will be displayed.  Each image in a gallery includes a  description of the pictured page.  If you click on an accompanying \'More Info\' button then you will be able to read more about a particular project.</p>\n' +
 '\n' +
 '           <!--beginning of portfolio galleries-->\n' +
@@ -119,7 +122,7 @@ const Portfolio = { template: '<div class="container mt-3"><h1 id="portfolio_hea
 '                            <a href="images-new/triad-behavioral-health-contact.png" itemprop="contentUrl" data-size="995x1494">\n' +
 '                                <img src="images-new/triad-behavioral-health-contact.png" itemprop="thumbnail" alt="Image description" />\n' +
 '                            </a>\n' +
-'                            <figcaption itemprop="caption description">Custom Bootstrap 4 Theme/Laravel Site<br/> TBH Contact page with reCAPTCHA </figcaption>\n' +
+'                            <figcaption itemprop="caption description">Custom Bootstrap 4 Theme/Laravel Site<br/> TBH ContactController page with reCAPTCHA </figcaption>\n' +
 '                        </figure>\n' +
 '\n' +
 '\n' +
@@ -388,7 +391,7 @@ const Portfolio = { template: '<div class="container mt-3"><h1 id="portfolio_hea
 '                            <a href="images-new/lilac-dogs-contact-page-good.png" itemprop="contentUrl" data-size="964x1024">\n' +
 '                                <img src="images-new/lilac-dogs-contact-page-good.png" itemprop="thumbnail" alt="Image description" />\n' +
 '                            </a>\n' +
-'                            <figcaption itemprop="caption description">Custom Contact page PHP</figcaption>\n' +
+'                            <figcaption itemprop="caption description">Custom ContactController page PHP</figcaption>\n' +
 '                        </figure>\n' +
 '\n' +
 '\n' +
@@ -421,14 +424,14 @@ const Portfolio = { template: '<div class="container mt-3"><h1 id="portfolio_hea
 '                            <a href="images-new/checkenginefree-contact-good.png" itemprop="contentUrl" data-size="1063x975">\n' +
 '                                <img src="images-new/checkenginefree-contact-good.png" itemprop="thumbnail" alt="Image description" />\n' +
 '                            </a>\n' +
-'                            <figcaption itemprop="caption description">Contact form PHP</figcaption>\n' +
+'                            <figcaption itemprop="caption description">ContactController form PHP</figcaption>\n' +
 '                        </figure>\n' +
 '\n' +
 '                        <figure style="display:none;" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">\n' +
 '                            <a href="images-new/checkenginefree-form-validation-good.png" itemprop="contentUrl" data-size="1063x1035">\n' +
 '                                <img src="images-new/checkenginefree-form-validation-good.png" itemprop="thumbnail" alt="Image description" />\n' +
 '                            </a>\n' +
-'                            <figcaption itemprop="caption description">Contact form validation</figcaption>\n' +
+'                            <figcaption itemprop="caption description">ContactController form validation</figcaption>\n' +
 '                        </figure>\n' +
 '\n' +
 '                    </div>\n' +
@@ -447,7 +450,7 @@ const Portfolio = { template: '<div class="container mt-3"><h1 id="portfolio_hea
 '                            <a href="images-new/amhodgson-section-main.png" itemprop="contentUrl" data-size="1048x1333">\n' +
 '                                <img src="images-new/amhodgson-main.png" itemprop="thumbnail" alt="amhodgson.com" />\n' +
 '                            </a>\n' +
-'                            <figcaption itemprop="caption description">Custom responsive Tumblr template<br/> with added Contact page (PHP)</figcaption>\n' +
+'                            <figcaption itemprop="caption description">Custom responsive Tumblr template<br/> with added ContactController page (PHP)</figcaption>\n' +
 '                        </figure>\n' +
 '\n' +
 '                        <figure style="display:none;" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">\n' +
@@ -461,7 +464,7 @@ const Portfolio = { template: '<div class="container mt-3"><h1 id="portfolio_hea
 '                            <a href="images-new/amhodgsoncontact-full.png" itemprop="contentUrl" data-size="1063x1300">\n' +
 '                                <img src="images-new/amhodgsoncontact-full.png" itemprop="thumbnail" alt="Image description" />\n' +
 '                            </a>\n' +
-'                            <figcaption itemprop="caption description">Custom Contact page PHP<br/>**Built outside of Tumblr</figcaption>\n' +
+'                            <figcaption itemprop="caption description">Custom ContactController page PHP<br/>**Built outside of Tumblr</figcaption>\n' +
 '                        </figure>\n' +
 '\n' +
 '                    </div>\n' +

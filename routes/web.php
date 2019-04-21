@@ -14,3 +14,6 @@
 Route::get('/{any}', function () {
     return view('resume');
 })->where('any', '.*');
+
+
+Route::post('/contact', 'ContactController@sendMail');

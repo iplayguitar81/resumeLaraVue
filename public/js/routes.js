@@ -9,6 +9,7 @@ const routes = [
     {
         path: '/',
         component: Home
+
     },
 
     {
@@ -20,7 +21,8 @@ const routes = [
     {
 
         path: '/portfolio',
-        component: Portfolio
+        component: Portfolio,
+
     },
 
     {

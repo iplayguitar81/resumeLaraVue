@@ -12,8 +12,11 @@
     <!--font awesome-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
-    <meta name="csrf-token" content="{{csrf_token()}}">
+    <link rel="stylesheet" href="/css/perfundo.css">
+
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <script>window.Laravel = {csrfToken: '{{csrf_token()}}'}</script>
+    <base href="/" />
 
     <title>Chris Snyder | Resume (thisdudecodes.com)</title>
 
@@ -301,6 +304,10 @@
 </head>
 <body>
 <br/>
+<br/>
+
+
+
 <div id="app">
 
     <div class="container">
@@ -355,6 +362,7 @@
 
     </div>
 
+
 </div>
 
 <footer class="footer">
@@ -373,14 +381,53 @@
 
 </footer>
 
+<style scoped>
+    @import "/css/photoswipe.css";
+    @import "/css/default-skin.css";
+</style>
 
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+
+<script>$.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });</script>
+
+<script src="/js/lg-thumbnail.min.js"></script>
+<script src="/js/lg-fullscreen.min.js"></script>
+
+
+{{--<script src="/js/vendor/jquery.hashchange.min.js"></script>--}}
+<script src="/js/vendor/jquery.easytabs.min.js"></script>
+
+
+
+<script src="/js/main.js"></script>
+<!--[if lt IE 9]>
+<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<script>window.html5 || document.write('<script src="js/vendor/html5shiv.js"><\/script>')</script>
+<![endif]-->
+
+
+<!-- Photoswipe  set of js and calling it-->
+<script src="/js/index.js"></script>
+<script src="/js/photoswipe.js"></script>
+<script src="/js/photoswipe-ui-default.min.js"></script>
+
+
+
 
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
 <script src="https://unpkg.com/vue-router@2.0.0/dist/vue-router.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.5.1/vue-resource.js"></script>
+
+
+
 
 
 {{--put above the routes.js...--}}
@@ -390,31 +437,25 @@
 
 <script src="/js/components/Form.vue.js"></script>
 <script src="/js/components/Contact.vue.js"></script>
-
-
 <script src="/js/components/NotFound.vue.js"></script>
-
-
-
-
-
 <script src="/js/routes.js"></script>
+<!-- jsdelivr cdn -->
+<script src="https://cdn.jsdelivr.net/npm/vee-validate@latest/dist/vee-validate.js"></script>
+
 
 
 <script>
+
+    Vue.use(VeeValidate);
+
 
 
     const app = new Vue({
             el: '#app',
 
-            data: {
-                contact: {
-                    name: '',
-                    email: '',
-                    comments: ''
-                }
-            },
             router: new VueRouter({mode: 'history', linkActiveClass: 'active', routes}),
+
+//        export: '/js/photoswipe.js',
 
 //        component: {Form}
 
@@ -476,9 +517,292 @@
         }
     );
 
+
+
 </script>
 
 
+
+
+
+
+
+
+
+
+
+<!--contact form JS-->
+<script>
+//    $(document).ready(function() {
+//
+//        $(".invalid_info_success").hide();
+//        $("#contact_success").hide();
+//    });
+//
+//    $("#form1").validate({
+//        rules: {name: {required: true}, comments: {required: true}, email: {required: true}},
+//        messages: {
+//            name: {required: "<i class='fas fa-exclamation-circle'></i> Please enter your name so I know who is contacting me!"},
+//            email: {required: "<i class='fas fa-exclamation-circle'></i> Please enter your email address so I know where to send a response to!"},
+//            comments: {required: "<i class='fas fa-exclamation-circle'></i> Please enter your message so I will know why you are contacting me!"}
+//        },
+//        errorPlacement: function (e, t) {
+//            e.prependTo(t.parent())
+//        },
+//        submitHandler: function (e) {
+//            sendContact();
+//            $("#form1").hide();
+//            $("#contact_header").hide();
+//            $("#contact_success").show();
+//            $("#contact_success").css("visibility", "visible");
+//            return false
+//        }
+//    });
+//
+//    function sendContact(){var e=$("input#name").val();var t=$("input#email").val();var n=$("textarea#comments").val(); $.ajax({type:"POST",url:"contactFormHandling.php",data:{comments:JSON.stringify(n),email:JSON.stringify(t),name:JSON.stringify(e)}})}
+
+
+    //photoSwipe JS
+
+    var initPhotoSwipeFromDOM = function(gallerySelector) {
+
+        // parse slide data (url, title, size ...) from DOM elements
+        // (children of gallerySelector)
+        var parseThumbnailElements = function(el) {
+            var thumbElements = el.childNodes,
+                numNodes = thumbElements.length,
+                items = [],
+                figureEl,
+                linkEl,
+                size,
+                item;
+
+            for(var i = 0; i < numNodes; i++) {
+
+                figureEl = thumbElements[i]; // <figure> element
+
+                // include only element nodes
+                if(figureEl.nodeType !== 1) {
+                    continue;
+                }
+
+                linkEl = figureEl.children[0]; // <a> element
+
+                size = linkEl.getAttribute('data-size').split('x');
+
+                // create slide object
+                item = {
+                    src: linkEl.getAttribute('href'),
+                    w: parseInt(size[0], 10),
+                    h: parseInt(size[1], 10)
+                };
+
+
+
+                if(figureEl.children.length > 1) {
+                    // <figcaption> content
+                    item.title = figureEl.children[1].innerHTML;
+                }
+
+                if(linkEl.children.length > 0) {
+                    // <img> thumbnail element, retrieving thumbnail url
+                    item.msrc = linkEl.children[0].getAttribute('src');
+                }
+
+                item.el = figureEl; // save link to element for getThumbBoundsFn
+                items.push(item);
+            }
+
+            return items;
+        };
+
+        // find nearest parent element
+        var closest = function closest(el, fn) {
+            return el && ( fn(el) ? el : closest(el.parentNode, fn) );
+        };
+
+        // triggers when user clicks on thumbnail
+        var onThumbnailsClick = function(e) {
+            e = e || window.event;
+            e.preventDefault ? e.preventDefault() : e.returnValue = false;
+
+            var eTarget = e.target || e.srcElement;
+
+            // find root element of slide
+            var clickedListItem = closest(eTarget, function(el) {
+                return (el.tagName && el.tagName.toUpperCase() === 'FIGURE');
+            });
+
+            if(!clickedListItem) {
+                return;
+            }
+
+            // find index of clicked item by looping through all child nodes
+            // alternatively, you may define index via data- attribute
+            var clickedGallery = clickedListItem.parentNode,
+                childNodes = clickedListItem.parentNode.childNodes,
+                numChildNodes = childNodes.length,
+                nodeIndex = 0,
+                index;
+
+            for (var i = 0; i < numChildNodes; i++) {
+                if(childNodes[i].nodeType !== 1) {
+                    continue;
+                }
+
+                if(childNodes[i] === clickedListItem) {
+                    index = nodeIndex;
+                    break;
+                }
+                nodeIndex++;
+            }
+
+
+            if(index >= 0) {
+                // open PhotoSwipe if valid index found
+                openPhotoSwipe( index, clickedGallery );
+            }
+            return false;
+        };
+
+        // parse picture index and gallery index from URL (#&pid=1&gid=2)
+        var photoswipeParseHash = function() {
+            var hash = window.location.hash.substring(1),
+                params = {};
+
+            if(hash.length < 5) {
+                return params;
+            }
+
+            var vars = hash.split('&');
+            for (var i = 0; i < vars.length; i++) {
+                if(!vars[i]) {
+                    continue;
+                }
+                var pair = vars[i].split('=');
+                if(pair.length < 2) {
+                    continue;
+                }
+                params[pair[0]] = pair[1];
+            }
+
+            if(params.gid) {
+                params.gid = parseInt(params.gid, 10);
+            }
+
+            return params;
+        };
+
+        var openPhotoSwipe = function(index, galleryElement, disableAnimation, fromURL) {
+            var pswpElement = document.querySelectorAll('.pswp')[0],
+                gallery,
+                options,
+                items;
+
+            items = parseThumbnailElements(galleryElement);
+
+            // define options (if needed)
+            options = {
+
+                // define gallery index (for URL)
+                galleryUID: galleryElement.getAttribute('data-pswp-uid'),
+
+                getThumbBoundsFn: function(index) {
+                    // See Options -> getThumbBoundsFn section of documentation for more info
+                    var thumbnail = items[index].el.getElementsByTagName('img')[0], // find thumbnail
+                        pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
+                        rect = thumbnail.getBoundingClientRect();
+
+                    return {x:rect.left, y:rect.top + pageYScroll, w:rect.width};
+                },
+
+//                getDoubleTapZoom: function(isMouseClick, item) {
+//                    if(isMouseClick) {
+//                        return .8; //<---- This 4
+//                    } else {
+//                        return item.initialZoomLevel < 0.7 ? .5 : .5; //<---- 4 here
+//                    }
+//                },
+//                maxSpreadZoom: .5 //<---- and this 4 here
+
+
+            };
+
+            // PhotoSwipe opened from URL
+            if(fromURL) {
+                if(options.galleryPIDs) {
+                    // parse real index when custom PIDs are used
+                    // http://photoswipe.com/documentation/faq.html#custom-pid-in-url
+                    for(var j = 0; j < items.length; j++) {
+                        if(items[j].pid == index) {
+                            options.index = j;
+                            break;
+                        }
+                    }
+                } else {
+                    // in URL indexes start from 1
+                    options.index = parseInt(index, 10) - 1;
+                }
+            } else {
+                options.index = parseInt(index, 10);
+            }
+
+            // exit if index not found
+            if( isNaN(options.index) ) {
+                return;
+            }
+
+            if(disableAnimation) {
+                options.showAnimationDuration = 0;
+            }
+
+            // Pass data to PhotoSwipe and initialize it
+            gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);
+            gallery.init();
+        };
+
+        // loop through all gallery elements and bind events
+        var galleryElements = document.querySelectorAll( gallerySelector );
+
+        for(var i = 0, l = galleryElements.length; i < l; i++) {
+            galleryElements[i].setAttribute('data-pswp-uid', i+1);
+            galleryElements[i].onclick = onThumbnailsClick;
+        }
+
+        // Parse URL and open gallery if it contains #&pid=3&gid=1
+        var hashData = photoswipeParseHash();
+        if(hashData.pid && hashData.gid) {
+            openPhotoSwipe( hashData.pid ,  galleryElements[ hashData.gid - 1 ], true, true );
+        }
+    };
+
+    // execute above function
+    initPhotoSwipeFromDOM('.my-gallery');
+
+
+
+//
+//    //tab linking from independent link inside page:
+//    $('.tab-link').on('click', function(event) {
+//        // Prevent url change
+//        event.preventDefault();
+//
+//        // `this` is the clicked <a> tag
+//        var target = $('[data-toggle="tab"][href="' + this.hash + '"]');
+//
+//        // opening tab
+//        target.trigger('click');
+//        // scrolling into view
+//        target[0].scrollIntoView(true);
+//    });
+
+
+
+
+
+
+
+</script>
 
 </body>
 </html>

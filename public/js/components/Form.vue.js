@@ -1,5 +1,5 @@
 Vue.component('contact',
-    {template: '<div id="contact_form"><h1 id="contact_header" class="text-center trebuchet lg-headers"><i class="fas fa-envelope"></i> Contact Chris</h1>\n' +
+    {template: '<div id="contact_form"><h1 id="contact_header" class="text-center trebuchet lg-headers"><i class="fas fa-envelope"></i> ContactController Chris</h1>\n' +
 '                <form id="form1">\n' +
 '                    <p class="calibri main-text">Please feel free to send me a message!  I will review what has been sent to me and get back to you as soon as possible!  Thank you for taking the time to look at my portfolio &amp; resume.</p>\n' +
 '                    <br/>\n' +
@@ -42,5 +42,19 @@ Vue.component('contact',
             email: null,
             comments: null
         }
-    } },
+    },
+
+        methods: {
+
+        onSubmit() {
+            let resumeMessage = {
+                name: this.name,
+                email: this.email,
+                comments: this.comments
+            }
+        }
+
+        }
+
+    },
     );
